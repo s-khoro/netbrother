@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:pro="http://www.liquibase.org/xml/ns/pro"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.2.xsd
+        http://www.liquibase.org/xml/ns/pro
+        http://www.liquibase.org/xml/ns/pro/liquibase-pro-4.2.xsd">
+
+    <changeSet id="create-domains-table" author="skh">
+        <createTable tableName="domains">
+            <column name="id" defaultValueComputed="uuid_generate_v4()" type="UUID">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="domain" type="varchar(253)">
+                <constraints nullable="false" unique="true"/>
+            </column>
+            <column name="reg_date" type="timestamp"/>
+            <column name="upd_date" type="timestamp"/>
+            <column name="exp_date" type="timestamp"/>
+            <column name="is_active" type="boolean" defaultValueBoolean="false">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+
+</databaseChangeLog>
